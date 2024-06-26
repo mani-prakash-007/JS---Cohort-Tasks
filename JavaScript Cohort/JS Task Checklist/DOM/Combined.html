@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .divz1{
+            background-color: red;
+        }
+        .button1{
+            background-color: red;
+        }
+        .button2{
+            background-color: yellow;
+        }
+        .button3{
+            background-color: blue;
+        }
+        .button4{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Default Submission Preventing</h1>
+    <form action="#" id="submit1">
+        <input type="text" name="ip1" id="ip1"><br><br>
+        <input type="text" name="ip2" id="ip2"><br><br>
+        <input type="submit">
+    </form>
+    <br><hr><br>
+    <h1>Mouse Hover - x,y Coordinates</h1>
+    <div id = xyCoord>
+        <h2>Mouse Hovering place</h2>
+        <p id="para">X , Y Coordinates displays here</p>
+    </div>
+    <br><hr><br>
+    <h1>Mouse hovering Each Para to different Color</h1>
+    <div>
+        <p>This is paragraph 1</p>
+        <p>This is paragraph 2</p>
+        <p>This is paragraph 3</p>
+        <p>This is paragraph 4</p>
+        <p>This is paragraph 5</p>
+        <p>This is paragraph 6</p>
+        <p>This is paragraph 7</p>
+    </div>
+    <br><hr><br>
+    <h1>Div Element Background Color Changing while Clicking</h1>
+    <div id="divz">
+        <h1>Div 1</h1>
+        <p>While Clicking Background changes...!!</p>
+    </div>
+    <div id="divz">
+        <h1>Div 2</h1>
+        <p>While Clicking Background changes...!!</p>
+    </div>
+    <div id="divz">
+        <h1>Div 3</h1>
+        <p>While Clicking Background changes...!!</p>
+    </div>
+    <div id="divz">
+        <h1>Div 4</h1>
+        <p>While Clicking Background changes...!!</p>
+    </div>
+    <div id="divz">
+        <h1>Div 5</h1>
+        <p>While Clicking Background changes...!!</p>
+    </div>
+    <br><hr><br>
+    <h1>Changing Background when click the buttons</h1>
+    <div id="changingDiv">
+        <h2>Background Changes</h2>
+        <p>Different colors appears</p>
+    </div>
+    <button onclick="ChangeColor1()">Red</button>
+    <button onclick="ChangeColor2()">yellow</button>
+    <button onclick="ChangeColor3()">Blue</button>
+    <button onclick="ChangeColor4()">Green</button>
+    <br><hr><br>
+    <h1>Text Size Increasing using button</h1>
+    <div>
+        <h1>Modifying the Text Size</h1>
+        <p id="Text">Here the text Size Increases and Decreases</p>
+    </div>
+    <button onclick="IncreaseSize1()">Small</button>
+    <button onclick="IncreaseSize2()">Medium</button>
+    <button onclick="IncreaseSize3()">Large</button>
+    <button onclick="IncreaseSize4()">Extra Large</button>
+    <script>
+        //a
+        let submit = document.getElementById('submit1')
+        let ip1 = document.getElementById('ip1')
+        let ip2 = document.getElementById('ip2')
+        submit.addEventListener('submit', (e) => {
+            e.preventDefault()
+            console.log(ip1.value + " " + ip2.value);
+            console.log("Form Submitted");
+        })
+        //b
+        let div1 = document.getElementById('xyCoord')
+        let para = document.getElementById('para')
+        div1.addEventListener('mouseover', function (e){
+            const x = e.clientX-xyCoord.getBoundingClientRect().left
+            const y = e.clientY-xyCoord.getBoundingClientRect().top
+            para.textContent = `X : ${x}   Y : ${y}`
+        })
+
+        //c
+        let paras = document.querySelectorAll('p')
+        for(let i = 1 ; i < paras.length ; i++){
+        paras[i].addEventListener('mouseover' , () => {
+            paras[i].style.color = "red"
+        })
+    }
+        for(let i = 1 ; i < paras.length ; i++){
+        paras[i].addEventListener('mouseout' , () => {
+            paras[i].style.color = "black"
+        })
+    }
+        //d
+        let alldivs = document.querySelectorAll('div')
+
+        for(let i = 2 ; i < alldivs.length ; i++){
+            alldivs[i].addEventListener('click' , () => {
+                alldivs[i].classList.toggle('divz1')
+            })
+        }
+        //e
+        let lastDiv = document.getElementById('changingDiv')
+
+
+        function ChangeColor1(){
+            lastDiv.classList.toggle('button1')
+        }
+        function ChangeColor2(){
+            lastDiv.classList.toggle('button2')
+        }
+        function ChangeColor3(){
+            lastDiv.classList.toggle('button3')
+        }
+        function ChangeColor4(){
+            lastDiv.classList.toggle('button4')
+        }
+
+        //f 
+
+        let text = document.getElementById('Text')
+
+        function IncreaseSize1(){
+            text.style.fontSize = '15px'
+        }
+        function IncreaseSize2(){
+            text.style.fontSize = '20px'
+        }
+        function IncreaseSize3(){
+            text.style.fontSize = '25px'
+        }
+        function IncreaseSize4(){
+            text.style.fontSize = '30px'
+        }
+        
+    </script>
+</body>
+</html>

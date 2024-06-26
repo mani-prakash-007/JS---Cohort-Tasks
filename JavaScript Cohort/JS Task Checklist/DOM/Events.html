@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .disappear1{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click Event </h1>
+    <p>Button Not Clicked</p>
+    <button onclick="changetext()">Click</button>
+    <br><br>
+    <h1>Mouse Over Events</h1>
+    <div id="mouseOver">
+        <h1>Changeing Color While Mouse Over</h1>
+        <p>The Block which changes the color while MouseOvering</p>
+    </div>
+    <br><br>
+    <h1>Input Event Listener</h1>
+    <input type="text" name="input" id="input" placeholder="Type Something..!!">
+    <br><br>
+    <h1>Toggling the Class list - Hide and Unhide</h1>
+    <div class="disappear">
+        <h1>Disappearing Block</h1>
+        <p>This is the block which is going to Disappear</p>
+    </div>
+    <button>Click here</button>
+</body>
+
+<script>
+    function changetext(){
+        let para = document.querySelector('p')
+        para.textContent = "Button Clicked"
+        para.style.color = 'green'
+    }
+
+    let mouseOver = document.getElementById('mouseOver')
+    mouseOver.addEventListener("mouseover" , function(){
+        this.style.color = "red"
+    })
+    mouseOver.addEventListener("mouseout" , function(){
+        this.style.color = ""
+    })
+
+    let inputText = document.getElementById("input")
+    inputText.addEventListener('input' , function(){
+        console.log(this.value)
+    })
+    
+    let divs = document.querySelectorAll('div')
+    let buttons = document.querySelectorAll('button')
+    buttons[1].addEventListener("click", function(){
+        divs[1].classList.toggle("disappear1")
+    })
+</script>
+</html>
